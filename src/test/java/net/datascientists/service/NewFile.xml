@@ -90,7 +90,7 @@
 						</elementProp>
 						<elementProp name="referer" elementType="Header">
 							<stringProp name="Header.name">referer</stringProp>
-							<stringProp name="Header.value">http://localhost:8080/nodecode/
+							<stringProp name="Header.value">http://localhost:8080/rma/
 							</stringProp>
 						</elementProp>
 						<elementProp name="accept-encoding" elementType="Header">
@@ -149,7 +149,7 @@
 						</elementProp>
 						<elementProp name="referer" elementType="Header">
 							<stringProp name="Header.name">referer</stringProp>
-							<stringProp name="Header.value">http://localhost:8080/nodecode/
+							<stringProp name="Header.value">http://localhost:8080/rma/
 							</stringProp>
 						</elementProp>
 						<elementProp name="accept-encoding" elementType="Header">
