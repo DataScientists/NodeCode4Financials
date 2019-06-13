@@ -1,17 +1,18 @@
 <div ng-cloak>
-	<div>
-		<table ng-table="vm.tableParams" ng-cloak
-			class="table table-bordered table-hover 
-  table-condensed editable-table"
-			show-filter="true">
-			<tr ng-repeat="node in $data">
-				<td title="'Node'" filter="{ node: 'text'}" sortable="'node'">
-				</td>
-			</tr>
-		</table>
-		<div data-angular-treeview="true" data-tree-id="mytree"
-			data-tree-model="treeMenu" data-node-id="roleId"
-			data-node-label="roleName" data-node-children="children"
-			class="side-navigation"></div>
+	<div class="virtualRepeatdemoVerticalUsage">
+		<md-content layout="column">
+    <p>
+      Display an expandble tree using md-virtual-repeat
+    </p>
+    <md-virtual-repeat-container id="vertical-container-kz" style="height: 500px">
+      <div md-virtual-repeat="item in vm.model" class="repeated-item" flex="" md-on-demand="true" ng-click="vm.toggleExpansion(item)">
+        <span ng-class="{ 'd1' : item.depth == 1, 'd2' : item.depth == 2 }">
+          
+        <span>{{item.name}}</span>
+        <span ng-if="item.children.length > 0">({{item.children.length}})</span>
+        </span>
+      </div>
+    </md-virtual-repeat-container>
+  </md-content>
 	</div>
 </div>

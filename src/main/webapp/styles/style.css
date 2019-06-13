@@ -1258,74 +1258,43 @@ li.borderless {
 
 #####Angular tree view
 
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,600italic,700,700italic,800,800italic,600,400italic);
-/* prevent user selection */
-div[data-angular-treeview] {
-  -moz-user-select: -moz-none;
-  -khtml-user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+.virtualRepeatdemoVerticalUsage #vertical-container-kz {
+  height: 292px !important;
+  width: 400px !important;
 }
-div[data-tree-model] ul {
-  list-style: none;
-  border: none;
-  overflow: hidden;
-}
-div[data-tree-model] li .expanded {
-  padding: 1px 10px;
-  background-image: url("http://cfile23.uf.tistory.com/image/205B973A50C13F4B19D9BD");
-  background-repeat: no-repeat;
-}
-div[data-tree-model] li .collapsed {
-  padding: 1px 10px;
-  background-image: url("http://cfile23.uf.tistory.com/image/1459193A50C13F4B1B05FB");
-  background-repeat: no-repeat;
-}
-div[data-tree-model] li .normal {
-  padding: 1px 10px;
-  background-image: url("http://cfile23.uf.tistory.com/image/165B663A50C13F4B196CCA");
-  background-repeat: no-repeat;
-}
-div[data-tree-model] li i, div[data-tree-model] li span {
-  cursor: pointer;
-}
-div[data-tree-model] li i:hover, div[data-tree-model] li span:hover {
-  font-weight: 600;
-}
-div[data-tree-model] li .selected {
-  font-weight: 600;
-  padding: 1px 5px;
-}
-.side-navigation {
-  background-color: #5e7fa7;
-  color: #cfd7e8;
-  padding: 20px;
-  min-width: 350px;
-  float: left;
+
+.virtualRepeatdemoVerticalUsage .repeated-item {
+  border-bottom: 1px solid #ddd;
   box-sizing: border-box;
-  height: 100vh;
+  height: 24px;
+  padding-top: 3px;
+  font-size: 14px;
 }
-.side-navigation ul {
-  margin: 0;
-  width: auto;
-  max-width: 100%;
-  list-style-position: inside;
+
+.virtualRepeatdemoVerticalUsage .repeated-item:hover {
+    background-color: #eee;
 }
-.side-navigation ul li {
-  width: auto;
-  font: 300 12px 'Open Sans', sans-serif;
-  white-space: normal;
-  margin: 3px 0;
+
+.virtualRepeatdemoVerticalUsage md-content {
+  margin: 16px;
 }
-.side-navigation ul li a {
-  text-decoration: none;
-  color: #cfd7e8;
-  font: 300 0.9em 'Open Sans', sans-serif;
+
+.virtualRepeatdemoVerticalUsage md-virtual-repeat-container {
+  border: solid 1px grey;
 }
-.side-navigation > :first-child {
-  padding: 0;
+
+.virtualRepeatdemoVerticalUsage .md-virtual-repeat-container .md-virtual-repeat-offsetter {
+  padding-left: 16px;
 }
-.side-navigation ul ul ul ul ul {
-  list-style-type: square;
+
+.d0 {
+  font-weight: bold;
+}
+
+.d1 {
+  margin-left: 20px;
+}
+
+.d2 {
+  margin-left: 40px;
 }
