@@ -67,6 +67,14 @@
              });
              return request.then(handleSuccess, handleError);
            }
+         var getNodesData = function() {
+ 			return $http.get('/rma/data/data.json', {
+ 				cache : false
+ 			}).then(function(response) {
+ 				var data = response.data;
+ 				return data;
+ 			});
+ 		};
          function handleError(response) {
              if(!angular.isObject(response.data) || !response.data.message) {
                return ($q.reject("An unknown error occurred."));
@@ -78,6 +86,7 @@
              return (response);
            }
         return {
+        	getNodesData: getNodesData,
         	getNodeTree:getNodeTree,
         	getFlatTree:getFlatTree,
         	visit: visit,

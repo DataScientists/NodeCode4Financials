@@ -3,49 +3,66 @@
 	  .module('nodeCodeApp.Node')
 	  .controller('NodeCtrl',NodeCtrl);
 	
-	NodeCtrl.$inject = ['$log','ngTableParams','$scope','$filter','TreeService'];
-	function NodeCtrl($log,NgTableParams,$scope,$filter,TreeService){
+	NodeCtrl.$inject = ['$log','ngTableParams','$scope','$filter','$interval','TreeService', 'uiGridTreeViewConstants'];
+	function NodeCtrl($log,NgTableParams,$scope,$filter,$interval,TreeService, uiGridTreeViewConstants){
 		var self = this;
-		
-		self.getNodeTree = function() {
-			var rootNode =4;
-		      
-		      TreeService.getNodeTree(4).then(function(response) {
-		          if(response.status == '200') {
-		        	  var data = response.data;
-		            console.log("Retreived tree from root node "+rootNode)
-		          } else {
-		            debugger;
-		          }
-		        });
-		      
-		};
-		
-		  var TreeFlatModel = function() {
+		self.getNodeTreeData = function(){
+			TreeService.getNodeTree(4).then(function(response){
+				if(response.status == 200){
+					console.log(response.data);
+					writeoutNode( response.data, 0, $scope.gridOptions.data );
+					
+				}
+			});
+		}
+		var writeoutNode = function( childArray, currentLevel, dataArray ){
+			  childArray.forEach( function( node ){
+			    if ( node.childNodes !== null && node.childNodes !== 'undefined' && node.childNodes.length > 0 ){
+			      node.$$treeLevel = currentLevel;
+			    }
+			    dataArray.push( node );
+			    if(node.childNodes !== null && node.childNodes !== 'undefined'){
+			    	writeoutNode( node.childNodes, currentLevel + 1, dataArray );
+			    }
+			  });
+			};
 
-		        this.flatTree = [];
-
-		        this.refresh = function() {
-		          this.flatTree = TreeService.getFlatTree();
-		        };
-
-		        this.getItemAtIndex = function(index) {
-		          return this.flatTree[index];
-		        };
-
-		        this.getLength = function() {
-		          return this.flatTree.length;
-		        };
-
-		        this.refresh();
-		      };
-
-		      self.model = new TreeFlatModel();
-		      console.log(self.model);
-		      self.toggleExpansion = function(node) {
-		        node.expanded = node.expanded ? false : true;
-		        this.model.refresh();
-		      };
+			
+		  $scope.gridOptions = {
+				  	data: [],
+				    enableSorting: true,
+				    enableFiltering: true,
+				    showTreeExpandNoChildren: true,
+				    columnDefs: [
+				      { name: 'name', width: '30%' },
+				      { name: 'region', width: '30%' },
+				      { name: 'inputValue', width: '30%' }
+				     ],
+				    onRegisterApi: function( gridApi ) {
+				      $scope.gridApi = gridApi;
+//				      $scope.gridApi.treeBase.on.rowExpanded($scope, function(row) {
+//				        if( row.entity.$$hashKey === $scope.gridOptions.data[50].$$hashKey && !$scope.nodeLoaded ) {
+//				         
+//				        }
+//				      });
+				    }
+				  };
+		  self.addColumn = function(){
+			  	$scope.gridOptions.columnDefs.push({name: 'New Column', width: '30%'});
+		  }
+		  $scope.expandAll = function(){
+			    $scope.gridApi.treeBase.expandAllRows();
+			  };
+			 
+			  $scope.toggleRow = function( rowNum ){
+			    $scope.gridApi.treeBase.toggleRowTreeState($scope.gridApi.grid.renderContainers.body.visibleRowCache[rowNum]);
+			  };
+			 
+			  $scope.toggleExpandNoChildren = function(){
+			    $scope.gridOptions.showTreeExpandNoChildren = !$scope.gridOptions.showTreeExpandNoChildren;
+			    $scope.gridApi.grid.refresh();
+			  };
+			  
 		
 	}
 	

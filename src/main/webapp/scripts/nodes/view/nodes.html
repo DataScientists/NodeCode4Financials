@@ -1,22 +1,9 @@
 <div ng-cloak>
-	<div class="virtualRepeatdemoVerticalUsage">
-		<md-content layout="column">
-    <p>
-      Display an expandble tree using md-virtual-repeat
-    </p>
-    <button class="btn btn-default"
-            ng-click="vm.getNodeTree()"
-            type="button">Get Node Tree
-    </button>
-    <md-virtual-repeat-container id="vertical-container-kz" style="height: 500px">
-      <div md-virtual-repeat="item in vm.model" class="repeated-item" flex="" md-on-demand="true" ng-click="vm.toggleExpansion(item)">
-        <span ng-class="{ 'd1' : item.depth == 1, 'd2' : item.depth == 2 }">
-          
-        <span>{{item.name}}</span>
-        <span ng-if="item.children.length > 0">({{item.children.length}})</span>
-        </span>
-      </div>
-    </md-virtual-repeat-container>
-  </md-content>
+	 <button id="expandAll" type="button" class="btn btn-success" ng-click="expandAll()">Expand All</button>
+      <button id="toggleFirstRow" type="button" class="btn btn-success" ng-click="toggleRow(0)">Toggle First Row</button>
+      <button id="toggleSecondRow" type="button" class="btn btn-success" ng-click="toggleRow(1)">Toggle Second Row</button>
+       <button id="toggleSecondRow" type="button" class="btn btn-success" ng-click="vm.getNodeTreeData()">Get Node Tree Data</button>
+       <button id="toggleSecondRow" type="button" class="btn btn-success" ng-click="vm.addColumn()">Add Column</button>
+      <div id="grid1" ui-grid="gridOptions" ui-grid-tree-view class="grid"></div>
 	
 </div>
