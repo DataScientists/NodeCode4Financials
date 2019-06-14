@@ -35,7 +35,7 @@ public class Node implements Cloneable {
 	@OneToMany(mappedBy = "parentId", targetEntity = Node.class)
     @Cascade(value = {CascadeType.SAVE_UPDATE, CascadeType.PERSIST})
     @OrderBy("sequence ASC")
-    protected List<Node> childNodes;
+    private List<Node> childNodes;
 	
 	@OneToMany(mappedBy="node", fetch = FetchType.LAZY)
 	@Cascade(value = {CascadeType.SAVE_UPDATE, CascadeType.PERSIST})
@@ -103,4 +103,10 @@ public class Node implements Cloneable {
     public String toString() {
         return ReflectionToStringBuilder.toString(this);
     }
+	public List<Node> getChildNodes() {
+		return childNodes;
+	}
+	public void setChildNodes(List<Node> childNodes) {
+		this.childNodes = childNodes;
+	}
 }

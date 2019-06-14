@@ -18,10 +18,15 @@ public class NodeMapper implements BaseMapper<NodeVO,Node>{
             return null;
         }
         NodeVO nodeVO = new NodeVO();
+        nodeVO.setName(node.getName());
+        nodeVO.setDescription(node.getDescription());
         nodeVO.setIdNode(node.getId());
         nodeVO.setDeleted(node.getDeleted());
         nodeVO.setLastUpdated(node.getLastUpdated());
-        		
+        List<Node> childNodes = node.getChildNodes();
+        if (!childNodes.isEmpty()) {
+        	nodeVO.setChildNodes(this.convertToVOList(childNodes));
+        }		
         return nodeVO;
     }
     

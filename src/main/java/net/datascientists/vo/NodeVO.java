@@ -26,6 +26,7 @@ public  class NodeVO {
 	protected Date lastUpdated;
 	@JsonInclude(Include.NON_EMPTY)
 	protected List<NoteVO> notes;
+	private List<NodeVO> childNodes;
 	protected long originalId;
 	protected Integer deleted = 0;
 	protected String nodeclass;
@@ -163,6 +164,14 @@ public  class NodeVO {
 	@Override
 	public String toString() {
 		return ToStringBuilder.reflectionToString(this);
+	}
+
+	public List<NodeVO> getChildNodes() {
+		return childNodes;
+	}
+
+	public void setChildNodes(List<NodeVO> childNodes) {
+		this.childNodes = childNodes;
 	}
 
 }
