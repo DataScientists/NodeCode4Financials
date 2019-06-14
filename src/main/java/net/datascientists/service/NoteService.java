@@ -36,10 +36,10 @@ public class NoteService implements BaseService<NoteVO>{
 
 	@Override
 	public List<NoteVO> find(String searchName, Object searchVal) {
-		Note note = (Note) dao.find(searchName,searchVal);
-		NoteVO noteVO = mapper.convertToVO(note);
+		List<Note> notes =  dao.find(searchName,searchVal);
+		List<NoteVO> noteVOs = mapper.convertToVOList(notes);
 		List<NoteVO> list = new ArrayList<NoteVO>();
-		list.add(noteVO);
+		list.addAll(noteVOs);
 		return list;
 	}
 

@@ -2,7 +2,9 @@
 
     angular.module('nodeCodeApp.Node').service('TreeService',TreeService);
     
-    function TreeService(){
+    TreeService.$inject = ['$http', '$q'];
+    
+    function TreeService($http, $q){
     	 var tree = createTree();
 
          getFlatTree = function() {
@@ -53,13 +55,37 @@
            return tree;
          }
        
+         function getNodeTree(idNode) {
+             var restUrl = "";
+             
+             restUrl = 'web/rest/node/getNodeTree?id=' + idNode;
+             //restUrl = 'web/rest/note/findById?id=' + idNode;
+             
+             var request = $http({
+               method: 'GET',
+               url: restUrl
+             });
+             return request.then(handleSuccess, handleError);
+           }
+         function handleError(response) {
+             if(!angular.isObject(response.data) || !response.data.message) {
+               return ($q.reject("An unknown error occurred."));
+             }
+             return ($q.reject(response.data.message));
+           }
 
+           function handleSuccess(response) {
+             return (response);
+           }
         return {
+        	getNodeTree:getNodeTree,
         	getFlatTree:getFlatTree,
         	visit: visit,
         	createTree: createTree
         };
 
     }
+    
+    
     
 })();

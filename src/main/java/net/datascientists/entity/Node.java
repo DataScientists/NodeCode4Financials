@@ -23,7 +23,7 @@ public class Node implements Cloneable {
 	@Id 
 	@GeneratedValue
 	private long id;
-	private long parentId;
+	private Long parentId;
 		
 	private String name;
 	private String description;	

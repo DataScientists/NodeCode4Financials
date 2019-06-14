@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
@@ -23,7 +24,8 @@ public class Note {
 	private Date lastUpdated;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
-	private Node node;
+	@JoinColumn(name = "nodeId", referencedColumnName = "id")
+	  private Node node;
 	
 	public Note() {
 

@@ -6,6 +6,21 @@
 	NodeCtrl.$inject = ['$log','ngTableParams','$scope','$filter','TreeService'];
 	function NodeCtrl($log,NgTableParams,$scope,$filter,TreeService){
 		var self = this;
+		
+		self.getNodeTree = function() {
+			var rootNode =4;
+		      
+		      TreeService.getNodeTree(4).then(function(response) {
+		          if(response.status == '200') {
+		        	  var data = response.data;
+		            console.log("Retreived tree from root node "+rootNode)
+		          } else {
+		            debugger;
+		          }
+		        });
+		      
+		};
+		
 		  var TreeFlatModel = function() {
 
 		        this.flatTree = [];

@@ -11,7 +11,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public abstract class NodeVO {
+public  class NodeVO {
 
 	protected long idNode;
 	protected long anchorId;
