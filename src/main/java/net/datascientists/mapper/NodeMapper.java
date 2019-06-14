@@ -23,6 +23,10 @@ public class NodeMapper implements BaseMapper<NodeVO,Node>{
         nodeVO.setIdNode(node.getId());
         nodeVO.setDeleted(node.getDeleted());
         nodeVO.setLastUpdated(node.getLastUpdated());
+        nodeVO.setType(node.getType());
+        nodeVO.setInputValue(node.getInputValue());
+        nodeVO.setCalculatedValue(node.getCalculatedValue());
+        nodeVO.setAsOfDate(node.getAsOfDate());
         List<Node> childNodes = node.getChildNodes();
         if (!childNodes.isEmpty()) {
         	nodeVO.setChildNodes(this.convertToVOList(childNodes));

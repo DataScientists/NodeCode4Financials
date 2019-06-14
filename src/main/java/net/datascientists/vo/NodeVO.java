@@ -31,6 +31,11 @@ public  class NodeVO {
 	protected Integer deleted = 0;
 	protected String nodeclass;
 	
+	private String inputValue;	
+	private String calculatedValue;	
+	private Date asOfDate;	
+
+	
 	public long getIdNode() {
 		return idNode;
 	}
@@ -172,6 +177,30 @@ public  class NodeVO {
 
 	public void setChildNodes(List<NodeVO> childNodes) {
 		this.childNodes = childNodes;
+	}
+
+	public String getInputValue() {
+		return inputValue;
+	}
+
+	public void setInputValue(String inputValue) {
+		this.inputValue = inputValue;
+	}
+
+	public String getCalculatedValue() {
+		return calculatedValue;
+	}
+
+	public void setCalculatedValue(String calculatedValue) {
+		this.calculatedValue = calculatedValue;
+	}
+
+	public Date getAsOfDate() {
+		return asOfDate;
+	}
+
+	public void setAsOfDate(Date asOfDate) {
+		this.asOfDate = asOfDate;
 	}
 
 }

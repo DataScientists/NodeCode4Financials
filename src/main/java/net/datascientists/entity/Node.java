@@ -27,6 +27,10 @@ public class Node implements Cloneable {
 		
 	private String name;
 	private String description;	
+	private String inputValue;	
+	private String calculatedValue;	
+	private Date asOfDate;	
+	private String type;	
 	private int sequence;
 		
 	private Integer deleted = 0;
@@ -109,4 +113,32 @@ public class Node implements Cloneable {
 	public void setChildNodes(List<Node> childNodes) {
 		this.childNodes = childNodes;
 	}
+	public String getInputValue() {
+		return inputValue;
+	}
+	public void setInputValue(String inputValue) {
+		this.inputValue = inputValue;
+	}
+	public String getCalculatedValue() {
+		return calculatedValue;
+	}
+	public void setCalculatedValue(String calculatedValue) {
+		this.calculatedValue = calculatedValue;
+	}
+	public Date getAsOfDate() {
+		return asOfDate;
+	}
+	public void setAsOfDate(Date asOfDate) {
+		this.asOfDate = asOfDate;
+	}
+	public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
+	}
+	public void setParentId(Long parentId) {
+		this.parentId = parentId;
+	}
+	
 }
