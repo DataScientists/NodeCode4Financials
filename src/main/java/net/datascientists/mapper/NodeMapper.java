@@ -27,6 +27,8 @@ public class NodeMapper implements BaseMapper<NodeVO,Node>{
         nodeVO.setInputValue(node.getInputValue());
         nodeVO.setCalculatedValue(node.getCalculatedValue());
         nodeVO.setAsOfDate(node.getAsOfDate()); 
+        nodeVO.setRegion(node.getRegion()); 
+        nodeVO.setPeriod(node.getPeriod()); 
         List<Node> childNodes = node.getChildNodes();
         if (!childNodes.isEmpty()) {
         	nodeVO.setChildNodes(this.convertToVOList(childNodes));

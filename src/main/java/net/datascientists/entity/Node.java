@@ -31,6 +31,8 @@ public class Node implements Cloneable {
 	private String calculatedValue;	
 	private Date asOfDate;	
 	private String type;	
+	private String region;	
+	private String period;	
 	private int sequence;
 		
 	private Integer deleted = 0;
@@ -140,5 +142,18 @@ public class Node implements Cloneable {
 	public void setParentId(Long parentId) {
 		this.parentId = parentId;
 	}
+	public String getRegion() {
+		return region;
+	}
+	public void setRegion(String region) {
+		this.region = region;
+	}
+	public String getPeriod() {
+		return period;
+	}
+	public void setPeriod(String period) {
+		this.period = period;
+	}
+	
 	
 }

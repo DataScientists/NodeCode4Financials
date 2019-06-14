@@ -33,6 +33,8 @@ public  class NodeVO {
 	
 	private String inputValue;	
 	private String calculatedValue;	
+	private String region;	
+	private String period;	
 	private Date asOfDate;	
 
 	
@@ -201,6 +203,22 @@ public  class NodeVO {
 
 	public void setAsOfDate(Date asOfDate) {
 		this.asOfDate = asOfDate;
+	}
+
+	public String getPeriod() {
+		return period;
+	}
+
+	public void setPeriod(String period) {
+		this.period = period;
+	}
+
+	public String getRegion() {
+		return region;
+	}
+
+	public void setRegion(String region) {
+		this.region = region;
 	}
 
 }
