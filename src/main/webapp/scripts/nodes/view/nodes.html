@@ -1,9 +1,24 @@
 <div ng-cloak>
-	 <button id="expandAll" type="button" class="btn btn-success" ng-click="expandAll()">Expand All</button>
-      <button id="toggleFirstRow" type="button" class="btn btn-success" ng-click="toggleRow(0)">Toggle First Row</button>
+<div class="row">
+	<div class="col-md-4">
+	
+	<button id="expandAll" type="button" class="btn btn-success" ng-click="expandAll()">Expand All</button>
+      <!-- <button id="toggleFirstRow" type="button" class="btn btn-success" ng-click="toggleRow(0)">Toggle First Row</button>
       <button id="toggleSecondRow" type="button" class="btn btn-success" ng-click="toggleRow(1)">Toggle Second Row</button>
        <button id="toggleSecondRow" type="button" class="btn btn-success" ng-click="vm.getNodeTreeData()">Get Node Tree Data</button>
-       <button id="toggleSecondRow" type="button" class="btn btn-success" ng-click="vm.addColumn()">Add Column</button>
+       <button id="toggleSecondRow" type="button" class="btn btn-success" ng-click="vm.addColumn()">Add Column</button> -->
+     
+	</div>
+	<div class="col-md-4">
+	<md-input-container class="md-block" flex-gt-sm>
+			<label>Filter By Region</label>
+	<md-select required	ng-model="vm.selectedCountry" ng-change="vm.filterByCountry(vm.selectedCountry)"> 
+				<md-option ng-repeat="country in vm.country" ng-value='{{country.id}}'>{{country.name}}</md-option> 
+			</md-select>
+			</md-input-container>
+	</div>
+</div>
+	 
       <div id="grid1" ui-grid="gridOptions" ui-grid-tree-view class="grid"></div>
 	
 </div>

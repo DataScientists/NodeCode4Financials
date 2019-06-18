@@ -6,14 +6,33 @@
 	NodeCtrl.$inject = ['$log','ngTableParams','$scope','$filter','$interval','TreeService', 'uiGridTreeViewConstants'];
 	function NodeCtrl($log,NgTableParams,$scope,$filter,$interval,TreeService, uiGridTreeViewConstants){
 		var self = this;
+		$scope.data = [];
+		self.country = [{id:1,name:'All'},
+			   {id:2,name:'India'},
+			   {id:3,name:'COTI'}];
 		self.getNodeTreeData = function(){
 			TreeService.getNodeTree(4).then(function(response){
 				if(response.status == 200){
-					console.log(response.data);
 					writeoutNode( response.data, 0, $scope.gridOptions.data );
 					
 				}
 			});
+		}
+		self.getNodeTreeData();
+		self.filterByCountry = function(countryId){
+			if(countryId == 1){
+				$scope.gridOptions.data = $scope.data;
+			}else{
+				var country = self.country.filter(function(c){ return c.id == countryId});
+				console.log(country);
+				var filteredData = $scope.data.filter(function(d){
+					if (d.region == country[0].name || d.region == 'undefined' || d.region == null){
+						return d;
+					}
+					});
+				console.log(filteredData);
+				$scope.gridOptions.data = filteredData;
+			}
 		}
 		var writeoutNode = function( childArray, currentLevel, dataArray ){
 			  childArray.forEach( function( node ){
@@ -25,6 +44,7 @@
 			    	writeoutNode( node.childNodes, currentLevel + 1, dataArray );
 			    }
 			  });
+			  $scope.data = angular.copy(dataArray);
 			};
 
 			
