@@ -6,6 +6,12 @@
     function TabsCtrl($scope, $state, $rootScope, $log, $stickyState, auth) {
         $scope.loading = false;
         $scope.tabOptions = [];
+        if (auth.isLoggedIn() && auth.userHasPermission(['USER','ADMIN'])) {
+            $scope.tabOptions.push({
+                state: "tabs.nodes",
+                data: ""
+            });
+        }
         if (auth.isLoggedIn() && auth.userHasPermission(['ADMIN'])) {
         	$scope.tabOptions.push({
         		state: "tabs.admin",
@@ -13,20 +19,15 @@
         	});
         }
         
-        if (auth.isLoggedIn() && auth.userHasPermission(['USER','ADMIN'])) {
-            $scope.tabOptions.push({
-                state: "tabs.nodes",
-                data: ""
-            });
-        }
         
-        if (auth.isLoggedIn() && auth.userHasPermission(['ADMIN'])) {
-            $scope.tabOptions.push({
-                state: "tabs.jmx",
-                data: ""
-            });
-        }
-        
+//        
+//        if (auth.isLoggedIn() && auth.userHasPermission(['ADMIN'])) {
+//            $scope.tabOptions.push({
+//                state: "tabs.jmx",
+//                data: ""
+//            });
+//        }
+//        
         $scope.$watch('selectedIndex', function(current, old) {
             var state = null;
             var data = null;
@@ -56,6 +57,12 @@
         var tabs = [];
         tabs.selected = null;
         tabs.previous = null;
+        if (auth.isLoggedIn() && auth.userHasPermission(['USER', 'ADMIN'])) {
+        	tabs.push({
+                title: 'DMRS',
+                viewName: 'nodes@tabs'
+            });
+        }
         if (auth.isLoggedIn() && auth.userHasPermission(['ADMIN'])) {
         	tabs.push({
                 title: 'Admin',
@@ -63,19 +70,14 @@
             });
         }
         
-        if (auth.isLoggedIn() && auth.userHasPermission(['USER', 'ADMIN'])) {
-        	tabs.push({
-                title: 'Nodes',
-                viewName: 'nodes@tabs'
-            });
-        }
         
-        if (auth.isLoggedIn() && auth.userHasPermission(['ADMIN'])) {
-        	tabs.push({
-                title: 'JMeter',
-                viewName: 'jmx@tabs'
-            });
-        }
+        
+//        if (auth.isLoggedIn() && auth.userHasPermission(['ADMIN'])) {
+//        	tabs.push({
+//                title: 'JMeter',
+//                viewName: 'jmx@tabs'
+//            });
+//        }
         
         $scope.tabs = tabs;
         $scope.selectedIndex = 0;

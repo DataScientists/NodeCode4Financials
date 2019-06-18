@@ -1,24 +1,45 @@
 <div ng-cloak>
-<div class="row">
-	<div class="col-md-4">
-	
-	<button id="expandAll" type="button" class="btn btn-success" ng-click="expandAll()">Expand All</button>
-      <!-- <button id="toggleFirstRow" type="button" class="btn btn-success" ng-click="toggleRow(0)">Toggle First Row</button>
+	<div class="row">
+		<div class="col-md-2">
+
+			<button id="expandAll" type="button" class="btn btn-success"
+				ng-click="expandAll()">Expand All</button>
+			<!-- <button id="toggleFirstRow" type="button" class="btn btn-success" ng-click="toggleRow(0)">Toggle First Row</button>
       <button id="toggleSecondRow" type="button" class="btn btn-success" ng-click="toggleRow(1)">Toggle Second Row</button>
        <button id="toggleSecondRow" type="button" class="btn btn-success" ng-click="vm.getNodeTreeData()">Get Node Tree Data</button>
        <button id="toggleSecondRow" type="button" class="btn btn-success" ng-click="vm.addColumn()">Add Column</button> -->
-     
+
+		</div>
+		<div class="col-md-2">
+			<md-input-container class="md-block" flex-gt-sm>
+			<label>Filter By Region</label> <md-select required
+				ng-model="vm.selectedCountry"
+				ng-change="vm.filterByCountry(vm.selectedCountry)"> <md-option
+				ng-repeat="country in vm.country" ng-value='{{country.id}}'>{{country.name}}</md-option>
+			</md-select> </md-input-container>
+		</div>
+		<div class="col-md-8">
+		<md-button ng-click="vm.switchToPrevMonth()"   type="button" class="btn btn-primary" aria-label="View BoQ Details" >
+					<md-tooltip md-direction="bottom">Previous</md-tooltip>
+					<span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
+				</md-button>
+			<md-input-container flex-gt-sm>
+			<label>Month Year</label> <md-select required
+				ng-model="vm.selectedMonthYear" mg-change="vm.monthYearChanged()"> <md-option
+				ng-repeat="monthYear in monthYears " ng-value='{{monthYear.id}}'>{{monthYear.m}}</md-option>
+			</md-select> </md-input-container>
+			<md-input-container flex-gt-sm>
+			<label>Period</label> <md-select required
+				ng-model="selectedPeriod" ng-change=""> <md-option
+				ng-repeat="p in periodArray" ng-value='{{p}}'>{{p}} Months</md-option>
+			</md-select> </md-input-container>
+<md-button ng-click="vm.switchToNextMonth()"  type="button" class="btn btn-primary" aria-label="View BoQ Details" >
+					<md-tooltip md-direction="bottom">Next</md-tooltip>
+					<span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
+				</md-button>
+		</div>
 	</div>
-	<div class="col-md-4">
-	<md-input-container class="md-block" flex-gt-sm>
-			<label>Filter By Region</label>
-	<md-select required	ng-model="vm.selectedCountry" ng-change="vm.filterByCountry(vm.selectedCountry)"> 
-				<md-option ng-repeat="country in vm.country" ng-value='{{country.id}}'>{{country.name}}</md-option> 
-			</md-select>
-			</md-input-container>
-	</div>
-</div>
-	 
-      <div id="grid1" ui-grid="gridOptions" ui-grid-tree-view class="grid"></div>
-	
+
+	<div id="grid1" ui-grid="gridOptions" ui-grid-tree-view class="grid"></div>
+
 </div>
