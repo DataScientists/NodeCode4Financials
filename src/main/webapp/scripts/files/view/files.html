@@ -1,0 +1,27 @@
+<div ng-cloak>
+	<div class="row">
+		<div class="col-md-2">
+
+			<md-button id="expandAll" type="button" class="btn btn-success"
+				ng-click="showUploadFileDialog()">Upload File</md-button>
+
+		</div>
+
+	</div>
+	<table
+		class="table table-bordered table-hover table-condensed editable-table">
+		<thead>
+			<tr>
+				<th>File Name</th>
+				<th>Action</th>
+			</tr>
+			
+		</thead>
+		<tbody>
+			<tr ng-repeat="file in files">
+				<td>{{file.file_name}}</td>
+				<td><md-button class="btn btn-success" ng-click="vm.downloadFile(file)">Download</md-button></td>
+			</tr>
+		</tbody>
+		</table>
+</div>

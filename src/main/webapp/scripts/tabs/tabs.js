@@ -47,6 +47,17 @@
                 }
             }
         }).state( {
+            name:'tabs.files',
+            url: '/files',
+            authenticate:true,
+            views:{
+                'files@tabs':{
+                    templateUrl : "scripts/files/view/files.html",
+                    controller: 'FileCtrl as vm'
+
+                }
+            }
+        }).state( {
             name:'tabs.jmx',
             url: '/jmx',
             authenticate:true,

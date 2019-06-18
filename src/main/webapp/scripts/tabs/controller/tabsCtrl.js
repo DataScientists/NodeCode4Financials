@@ -12,6 +12,12 @@
                 data: ""
             });
         }
+        if (auth.isLoggedIn() && auth.userHasPermission(['USER','ADMIN'])) {
+            $scope.tabOptions.push({
+                state: "tabs.files",
+                data: ""
+            });
+        }
         if (auth.isLoggedIn() && auth.userHasPermission(['ADMIN'])) {
         	$scope.tabOptions.push({
         		state: "tabs.admin",
@@ -61,6 +67,12 @@
         	tabs.push({
                 title: 'DMRS',
                 viewName: 'nodes@tabs'
+            });
+        }
+        if (auth.isLoggedIn() && auth.userHasPermission(['USER', 'ADMIN'])) {
+        	tabs.push({
+                title: 'Files',
+                viewName: 'files@tabs'
             });
         }
         if (auth.isLoggedIn() && auth.userHasPermission(['ADMIN'])) {

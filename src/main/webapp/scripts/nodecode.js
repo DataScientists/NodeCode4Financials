@@ -25,7 +25,8 @@ angular
     "nodeCodeApp.Login",
     "nodeCodeApp.Logout",
     "nodeCodeApp.Node",
-    "nodeCodeApp.JMeter"
+    "nodeCodeApp.JMeter",
+    "nodeCodeApp.File"
   ], function($rootScopeProvider){
 	  $rootScopeProvider.digestTtl(100);
   })

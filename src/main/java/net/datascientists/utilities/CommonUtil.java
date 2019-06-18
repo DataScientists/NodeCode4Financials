@@ -2,6 +2,8 @@ package net.datascientists.utilities;
 
 import java.util.List;
 
+import org.apache.commons.lang3.SystemUtils;
+
 public class CommonUtil {
 	
 	public static boolean isListEmpty(List<? extends Object> list) {
@@ -22,5 +24,11 @@ public class CommonUtil {
 		} catch (NumberFormatException exception) {
 			return false;
 		}
+	}
+	public static boolean isWindows(){
+		if(SystemUtils.IS_OS_WINDOWS){
+			return true;
+		}
+		return false;
 	}
 }
