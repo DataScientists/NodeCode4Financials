@@ -1,13 +1,32 @@
 <div ng-cloak>
-	<div class="row">
-		<div class="col-md-2">
+	
+	<div layout-gt-sm="row" layout-align="center center">
+				
 
-			<md-button id="expandAll" type="button" class="btn btn-success"
-				ng-click="showUploadFileDialog()">Upload File</md-button>
+				<div ngf-select="vm.uploadFilePrepare(file)" ngf-drop="vm.uploadFilePrepare(file)" ng-model="file" class = "drop-box"
+					ngf-model-invalid="invalidFiles"
+					ngf-model-options="modelOptionsObj" ngf-multiple="false"
+					ngf-capture="capture"
+					ngf-drag-over-class="dragOverClassObj"
+					ngf-resize="{width: 500, height: 500}" ngf-max-size="20MB"
+					ngf-allow-dir="true" class="drop-box"
+					ngf-drop-available="dropAvailable">
+					Select File <span ng-show="dropAvailable"> or Drop File</span>
 
-		</div>
 
-	</div>
+				</div>
+				<div ngf-no-file-drop>File Drag/Drop is not supported for this browser</div>
+				<md-input-container class="block" flex-gt-sm ng-if="file">
+				
+				</md-input-container>
+
+
+
+			</div>
+			
+			<ul>
+				<li>{{file.name}}</li>
+			</ul>
 	<table
 		class="table table-bordered table-hover table-condensed editable-table">
 		<thead>
@@ -25,3 +44,14 @@
 		</tbody>
 		</table>
 </div>
+<style>
+	.drop-box {
+    background: #F8F8F8;
+    border: 5px dashed #DDD;
+    width: 100%;
+    height: 200px;
+    text-align: center;
+    padding-top: 25px;
+    margin: 10px;
+}
+</style>

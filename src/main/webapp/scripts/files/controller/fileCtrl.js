@@ -47,6 +47,7 @@
 	        }).then(function (resp) {
 	        	
 	        	$scope.file = null;
+	        	self.getFiles();
 	        }, function (resp) {
 	            console.log('Error status: ' + resp.status);
 	        }, function (evt) {
